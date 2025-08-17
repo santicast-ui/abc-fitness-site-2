@@ -1,0 +1,254 @@
+/* ===============================
+   ABC Fitness Studio – style.css
+   Palette: 
+     --navy: #0A1F44; (Primary background / headers)
+     --orange: #FF6B00; (Accent / CTA)
+     --gray-100: #F4F4F4; (Light bg sections)
+     --gray-300: #D9D9D9; (Borders)
+     --gray-700: #333333; (Body text)
+     --white: #FFFFFF; (Text on dark / card bg)
+   Typography:
+     Headings: Montserrat, Body: Open Sans
+   Accessibility:
+     ≥16px base, ≥1.5 line-height, visible focus, 
+     high-contrast text, large tap targets, reduced motion.
+================================= */
+
+/* 0) CSS Reset (lightweight, preserves semantics) */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html:focus-within { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+img, picture, svg, video { max-width: 100%; display: block; }
+input, button, textarea, select { font: inherit; }
+
+/* 1) Root theme tokens */
+:root {
+  --navy: #0A1F44;
+  --orange: #FF6B00;
+  --gray-100: #F4F4F4;
+  --gray-300: #D9D9D9;
+  --gray-700: #333333;
+  --white: #FFFFFF;
+
+  --radius: 12px;
+  --space-1: 0.375rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --maxw: 1100px;
+
+  --shadow-1: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-2: 0 8px 18px rgba(0,0,0,0.10);
+
+  --focus: 2px dashed var(--orange);
+}
+
+/* 2) Base typography */
+@media (prefers-reduced-motion: no-preference) {
+  :root { scroll-behavior: smooth; }
+}
+body {
+  font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--gray-700);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+}
+h1, h2, h3, h4 {
+  font-family: "Montserrat", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: var(--space-4) 0 var(--space-2);
+  line-height: 1.25;
+}
+p, ul, ol { margin: 0 0 var(--space-3); }
+ul, ol { padding-left: 1.25rem; }
+
+/* 3) Layout containers */
+header, footer {
+  background: var(--navy);
+  color: var(--white);
+}
+header .wrap,
+main .wrap,
+footer .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-3);
+}
+main .wrap { padding-top: var(--space-4); padding-bottom: var(--space-5); }
+section, article { margin-bottom: var(--space-5); }
+
+/* 4) Header & branding */
+#logo-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+#logo-area img {
+  width: 64px; height: 64px;
+  border-radius: 8px;
+  background: var(--white);
+}
+#logo-area h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* 5) Navigation */
+nav[aria-label="Main navigation"],
+nav[aria-label="Footer navigation"] {
+  margin-top: var(--space-2);
+}
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 8px;
+  display: inline-block;
+}
+nav a:hover,
+nav a:focus {
+  background: rgba(255,255,255,0.12);
+  outline: none;
+}
+nav a[aria-current="page"] {
+  background: rgba(255,255,255,0.22);
+}
+
+/* 6) Cards & sections */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-1);
+}
+
+/* 7) Buttons & inputs */
+button,
+.button,
+input[type="submit"] {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover,
+.button:hover { filter: brightness(0.95); }
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+}
+input[type="email"],
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  background: var(--white);
+}
+
+/* 8) Tables (Gallery) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+thead th {
+  background: var(--gray-100);
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--gray-300);
+}
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--gray-300);
+}
+tbody tr:last-child td { border-bottom: none; }
+td img { width: 100px; height: auto; border-radius: 8px; }
+
+/* 9) Footer */
+footer {
+  margin-top: var(--space-5);
+}
+footer h2 {
+  color: var(--white);
+  margin-top: 0;
+}
+footer ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: var(--space-2);
+}
+footer a { color: var(--white); text-decoration: underline; }
+
+/* 10) Homepage specific */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+.feature {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+/* 11) About form layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+fieldset {
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  background: var(--white);
+}
+
+/* 12) Simple “modal-like” cart area (text block) */
+.cart-box {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  white-space: pre-line; /* preserve line breaks from JS */
+}
+
+/* 13) Responsive tweaks */
+@media (min-width: 768px) {
+  #logo-area h1 { font-size: 1.75rem; }
+  .hero-grid { grid-template-columns: 2fr 1fr; }
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* 14) Motion & printing */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media print {
+  nav, footer { display: none; }
+  body { color: #000; }
+}
